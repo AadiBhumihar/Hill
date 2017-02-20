@@ -1,0 +1,47 @@
+ We have studied that to design a Hill cipher
+
+## Assignment ###
+,we first assign a number to each letter of the alphabet, then add
+three punctuation marks so that we have a prime number (29) of coded letters.
+
+## Encryption ##
+The original message will be translated to a string of numbers, which will be partitioned
+into groups of 3 letters and formed into a matrix P (each group of 3 comprising a
+column). The matrix P is then multiplied by an invertible encryption matrix M (we want
+to be able to get the message back!) and the resulting numbers translated back into letters
+to create a coded message of apparent gibberish.
+The extra bit of complication is that we want all numbers to be between 0 and 28, so we
+must use the “mod p” (modulus) operator, which takes a number and repeatedly adds or
+subtracts p until we have a number between 0 and p-1. In our case, we will use p=29.
+
+### Decryption ##
+To decrypt the message, each block is multiplied by the inverse of the matrix used for encryption.
+
+The matrix used for encryption is the cipher key, and it should be chosen randomly from 
+the set of invertible n × n matrices (modulo 29). The cipher can, of course, 
+be adapted to an alphabet with any number of letters; all arithmetic just needs
+ to be done modulo the number of letters instead of modulo 26.
+
+
+ we turn the ciphertext back into a vector, then simply multiply by the inverse matrix of the key matrix . 
+There are standard methods to calculate the inverse matrix;
+ 
+### Key Matrix ###
+We have also yet discussed two complications that exist in picking the encrypting matrix. 
+Not all matrices have an inverse . The matrix will have an inverse if and only if its determinant is not zero. 
+Also, in the case of the Hill Cipher, the determinant of the encrypting matrix must not have any common factors with the modular base. 
+Thus, if we work modulo n , the determinant must be nonzero, and must not be divisible by factor of n. 
+If the determinant is 0, or has common factors with the modular base, then the matrix cannot be used in the Hill cipher,
+ and another matrix must be chosen 
+
+
+The risk of the determinant having common factors with the modulus can be eliminated by making the modulus prime. 
+Consequently a useful variant of the Hill cipher adds 3 extra symbols (such as a space, a period and a question mark) 
+to increase the modulus to 29.
+
+### Key size ###
+
+ The key size is the binary logarithm of the number of possible keys. There are matrices of dimension 26^n^2 n × n, where n = number of character in string 'S'
+Thus log (size) of base 2 or about 4.7 n^2 as an upper bound on the key size of the 
+Hill cipher using n × n matrices. This is only an upper bound because not every 
+matrix is invertible and thus usable as a key.
